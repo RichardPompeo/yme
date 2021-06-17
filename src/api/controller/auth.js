@@ -29,14 +29,13 @@ router.post("/register", async (req, res) => {
 
     return res.send({
       user,
-      token: generateToken({ id: user.id, name: user.name }),
     });
   } catch (err) {
     return res.status(400).send({ error: "Registration failed" });
   }
 });
 
-router.post("/authenticate", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email }).select("+password");
@@ -51,7 +50,15 @@ router.post("/authenticate", async (req, res) => {
 
   user.password = undefined;
 
-  res.send({ user, token: generateToken({ id: user.id, name: user.name }) });
+  res.send({
+    user,
+    token: generateToken({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+    }),
+  });
 });
 
 router.post("/forgot-password", async (req, res) => {
@@ -130,6 +137,7 @@ router.post("/reset-password", async (req, res) => {
     }
 
     user.password = password;
+    user.passwordResetToken = null;
 
     await user.save();
 
@@ -141,4 +149,4 @@ router.post("/reset-password", async (req, res) => {
   }
 });
 
-module.exports = (app) => app.use("/auth", router);
+module.exports = (app) => app.use("/api/v1/auth", router);

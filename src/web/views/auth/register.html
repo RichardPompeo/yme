@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>yMe - Cadastro</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="box">
+        <h1 id="title">yMe - Cadastro</h1>
+        <form id="form" action="/register" method="POST">
+          <label for="email">E-mail:</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Obrigatório *"
+            required
+          />
+          <label for="name">Nome de usuário:</label><br />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Obrigatório *"
+            required
+          />
+          <label for="password">Senha:</label><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Obrigatório *"
+            required
+          />
+          <label for="confirm_password">Confirmar senha:</label><br />
+          <input
+            type="password"
+            id="confirm_password"
+            name="confirm_password"
+            placeholder="Obrigatório *"
+            required
+          />
+          <button type="submit" id="submit">Cadastrar</button>
+        </form>
+        <div id="account">
+          <a href="/login" id="change">Já possui uma conta? Faça login</a>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/register.js"></script>
+  </body>
+</html>

@@ -2,9 +2,11 @@
   "name": "api-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/web/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "node src/api/index.js",
+    "web": "node src/web/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
