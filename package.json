@@ -5,9 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node src/index.js",
-    "api": "node src/api/index.js",
-    "web": "node src/web/server.js"
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
