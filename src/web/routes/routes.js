@@ -4,7 +4,7 @@ const path = require("path/posix");
 
 const router = express.Router();
 
-const base_url = "http://localhost:3333/api/v1";
+const base_url = "http://localhost:3000/api/v1";
 
 router.get("/", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/index.html"));

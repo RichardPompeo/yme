@@ -2,9 +2,10 @@
   "name": "api-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "src/web/server.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node src/index.js",
     "api": "node src/api/index.js",
     "web": "node src/web/server.js"
   },
@@ -21,7 +22,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.12",
     "nodemailer": "^6.6.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

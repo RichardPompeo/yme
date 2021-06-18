@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const { v4: uuid } = require("uuid");
 
 const mongoose = require("../database/index");
 
@@ -6,6 +7,17 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+  },
+  token: {
+    type: String,
+    required: true,
+    select: false,
+    default: uuid(),
+  },
+  avatar: {
+    type: String,
+    default:
+      "https://cdn.discordapp.com/avatars/599563864509513739/353b6fb0e0fd382db47666fc31076977.png",
   },
   email: {
     type: String,
@@ -17,6 +29,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
+  },
+  followers: {
+    type: Array,
+    default: [],
+  },
+  following: {
+    type: Array,
+    default: [],
+  },
+  posts: {
+    type: Array,
+    default: [],
   },
   passwordResetToken: {
     type: String,

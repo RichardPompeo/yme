@@ -11,7 +11,7 @@ const router = express.Router();
 
 function generateToken(params = {}) {
   return jwt.sign(params, authConfig.secret, {
-    expiresIn: 86400,
+    expiresIn: 604800,
   });
 }
 
@@ -26,6 +26,7 @@ router.post("/register", async (req, res) => {
     const user = await User.create(req.body);
 
     user.password = undefined;
+    user.token = undefined;
 
     return res.send({
       user,
@@ -38,7 +39,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email }).select("+password +token");
 
   if (!user) {
     return res.status(400).send({ error: "User not found" });
@@ -53,10 +54,7 @@ router.post("/login", async (req, res) => {
   res.send({
     user,
     token: generateToken({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      createdAt: user.createdAt,
+      token: user.token,
     }),
   });
 });
