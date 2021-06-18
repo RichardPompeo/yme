@@ -5,36 +5,138 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="shortcut icon" href="/images/yme.png" />
+    <link rel="stylesheet" type="text/css" href="css/output.tailwind.css" />
     <title>yMe - Login</title>
   </head>
   <body>
-    <div id="container">
-      <div id="box">
-        <h1 id="title">yMe - Login</h1>
-        <form id="form" action="/login" method="POST">
-          <label for="email">E-mail:</label><br />
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Digite seu E-mail"
-            required
-          />
-          <label for="password">Senha:</label><br />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Digite sua senha"
-            required
-          />
-
-          <button type="submit" id="submit">Fazer login</button>
-        </form>
-        <div id="account">
-          <a href="/register" id="change">Não possui uma conta? Cadastre-se</a>
+    <div
+      class="
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        bg-gray-50
+        py-12
+        px-4
+        sm:px-6
+        lg:px-8
+      "
+    >
+      <div class="max-w-md w-full space-y-8 shadow-2xl p-5 rounded-3xl">
+        <div>
+          <img class="mx-auto h-24 w-auto" src="/images/yme.png" alt="yMe" />
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Faça login com sua conta
+          </h2>
         </div>
+        <form class="mt-8 space-y-6" action="/login" method="POST">
+          <input type="hidden" name="remember" value="true" />
+          <div class="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700"
+                >E-mail</label
+              >
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  class="
+                    focus:ring-red-500
+                    focus:border-red-500
+                    block
+                    w-full
+                    pr-12
+                    sm:text-sm
+                    border-gray-300
+                    rounded-md
+                    mb-3
+                  "
+                  placeholder="Obrigatório *"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700"
+                >Senha</label
+              >
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                  class="
+                    focus:ring-red-500
+                    focus:border-red-500
+                    block
+                    w-full
+                    pr-12
+                    sm:text-sm
+                    border-gray-300
+                    rounded-md
+                  "
+                  placeholder="Obrigatório *"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="text-sm">
+              <a
+                href="/register"
+                class="font-medium text-red-600 hover:text-red-500"
+              >
+                Não possui uma conta? Cadastre-se
+              </a>
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="
+                group
+                relative
+                w-full
+                flex
+                justify-center
+                py-2
+                px-4
+                border border-transparent
+                text-sm
+                font-medium
+                rounded-md
+                text-white
+                bg-red-500
+                hover:bg-red-600
+                focus:outline-none
+                focus:ring-2 focus:ring-offset-2 focus:ring-red-500
+              "
+            >
+              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                <!-- Heroicon name: solid/lock-closed -->
+                <svg
+                  class="h-5 w-5 text-red-400 group-hover:text-red-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              Fazer login
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     <script src="/scripts/login.js"></script>

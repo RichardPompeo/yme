@@ -21,6 +21,7 @@
   "author": "patek",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.3",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -31,6 +32,7 @@
     "mongoose": "^5.12.12",
     "nodemailer": "^6.6.1",
     "path": "^0.12.7",
+    "tailwindcss": "^2.2.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
