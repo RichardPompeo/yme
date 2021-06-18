@@ -20,7 +20,7 @@ const getCookie = (cname) => {
 
 (async () => {
   if (getCookie("token") === "nouser") {
-    return redirect();
+    return redirectAndClearCookies();
   }
 
   let user;
@@ -30,7 +30,7 @@ const getCookie = (cname) => {
       headers: { Authorization: `Bearer ${getCookie("token")}` },
     });
   } catch (err) {
-    return redirect();
+    return redirectAndClearCookies();
   }
 
   user = user.data.user;
@@ -47,6 +47,15 @@ const getCookie = (cname) => {
   document.getElementById("avatar").src = user.avatar;
 })();
 
-const redirect = () => {
+const redirectAndClearCookies = () => {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+
   return window.open("/login", "_self");
 };
