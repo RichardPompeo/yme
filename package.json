@@ -1,14 +1,24 @@
 {
-  "name": "api-rest",
+  "name": "yme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Um site em HTML, CSS e JavaScript, para rede social!",
   "main": "src/index.js",
+  "repository": {
+    "directory": "https://github.com/RichardPompeo/yme",
+    "type": "git",
+    "url": "https://github.com/RichardPompeo/yme"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "rest-api",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "patek",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
