@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const { v4: uuid } = require("uuid");
 
 const User = require("../models/user");
 const mailer = require("../modules/mailer");
@@ -30,6 +31,7 @@ router.post("/register", async (req, res) => {
     }
 
     req.body.username = "@" + req.body.username;
+    req.body.token = uuid();
 
     const user = await User.create(req.body);
 
