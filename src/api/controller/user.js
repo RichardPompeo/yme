@@ -28,4 +28,27 @@ router.get("/authenticate", async (req, res) => {
   }
 });
 
+router.get("/username", async (req, res) => {
+  let { username } = req.query;
+
+  username = "@" + username;
+
+  try {
+    let user;
+
+    if (await User.findOne({ username })) {
+      user = await User.findOne({ username });
+    } else {
+      return res.status(400).send({ error: "Invalid username was provided" });
+    }
+
+    res.send({
+      ok: true,
+      user: user,
+    });
+  } catch (err) {
+    return res.status(400).send({ error: "Username error" });
+  }
+});
+
 module.exports = (app) => app.use("/api/v1/user", router);

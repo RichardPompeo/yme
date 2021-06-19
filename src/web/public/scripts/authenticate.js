@@ -18,12 +18,24 @@ const getCookie = (cname) => {
   return "nouser";
 };
 
-const getUser = async () => {
+const getUser = async (username) => {
+  let user;
+
+  if (username) {
+    try {
+      user = await axios.get(`/api/v1/user/username?username=${username}`, {
+        headers: { Authorization: `Bearer ${getCookie("token")}` },
+      });
+    } catch (err) {
+      return redirectAndClearCookies();
+    }
+
+    return user.data.user;
+  }
+
   if (getCookie("token") === "nouser") {
     return redirectAndClearCookies();
   }
-
-  let user;
 
   try {
     user = await axios.get(`/api/v1/user/authenticate`, {

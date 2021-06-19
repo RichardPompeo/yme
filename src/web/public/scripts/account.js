@@ -27,7 +27,15 @@ menuButton.addEventListener("click", (onclick) => {
 });
 
 (async () => {
-  const user = await getUser();
+  let user;
+
+  console.log(window.location.pathname);
+
+  if (window.location.pathname === "/@") {
+    user = await getUser();
+  } else {
+    user = await getUser(window.location.pathname.slice(3));
+  }
 
   document.getElementsByTagName("title")[0].innerText = `yMe - ${user.name}`;
 
@@ -40,6 +48,8 @@ menuButton.addEventListener("click", (onclick) => {
   const profileFollowers = document.getElementById("profile-followers");
   const profilePosts = document.getElementById("profile-posts");
   const profileBio = document.getElementById("profile-bio");
+  const followButton = document.getElementById("follow-button");
+  const followButtonIcon = document.getElementById("follow-button-icon");
 
   setTimeout(() => {
     profilePicture.src = user.avatar;
@@ -63,7 +73,7 @@ menuButton.addEventListener("click", (onclick) => {
 
     profileBio.innerText = user.biography;
     profileBio.className =
-      " p-3 bg-gray-50 rounded text-sm text-center m-6 text-gray-700";
+      "p-3 bg-gray-50 rounded text-sm text-center m-6 text-gray-700";
 
     profilePosts.innerText = `${user.posts.length} postagens`;
     profilePosts.className =
@@ -76,5 +86,10 @@ menuButton.addEventListener("click", (onclick) => {
     profileFollowers.innerText = `${user.followers.length} seguidores`;
     profileFollowers.className =
       "text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-red-600 border-red-600 hover:bg-red-600 hover:text-red-100 cursor-default rounded";
+
+    followButton.querySelector("span").innerText = "Seguir";
+    followButton.className =
+      "bg-transparent bg-red-500 hover:bg-red-700 text-white border-red-600 border py-2 px-4 ml-0 md:ml-6 mt-3 rounded inline-flex items-center";
+    followButtonIcon.className.baseVal = "h-4 w-4 mr-1";
   }, 3000);
 })();

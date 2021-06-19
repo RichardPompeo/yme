@@ -352,7 +352,7 @@
         justify-center
         items-center
         overflow-hidden
-        md:max-w-sm
+        max-w-sm
         rounded-lg
         mx-auto
         shadow-2xl
@@ -377,7 +377,7 @@
           rounded-full
           overflow-hidden
           bg-white
-          border-4
+          border-3
         "
       >
         <img
@@ -414,7 +414,7 @@
           Carregando...
         </p>
       </div>
-      <div class="mt-6 pt-3 flex flex-wrap mx-6 border-t">
+      <div class="mt-6 pt-3 flex flex-wrap mx-6 border-t border-b pb-3">
         <div
           id="profile-followers"
           class="
@@ -478,6 +478,43 @@
         >
           Carregando...
         </div>
+      </div>
+      <div class="text-center md:text-left">
+        <button
+          id="follow-button"
+          class="
+            animate-pulse
+            bg-transparent bg-red-500
+            hover:bg-red-700
+            text-white
+            border-red-600 border
+            py-2
+            px-4
+            ml-0
+            md:ml-6
+            mt-3
+            rounded
+            inline-flex
+            items-center
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="follow-button-icon"
+            class="h-4 w-4 mr-1 hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+            />
+          </svg>
+          <span>Carregando...</span>
+        </button>
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

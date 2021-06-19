@@ -18,7 +18,11 @@ router.get("/login", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/auth/login.html"));
 });
 
-router.get("/account", (req, res) => {
+router.get("/@", (req, res) => {
+  res.sendFile(path.resolve("./src/web/views/user/account.html"));
+});
+
+router.get("/@/:username", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
 });
 
