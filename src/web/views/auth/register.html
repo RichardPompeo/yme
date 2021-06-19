@@ -60,13 +60,38 @@
             </div>
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700"
-                >Nome de usuário</label
+                >Nome verdadeiro</label
               >
               <div class="mt-1 relative rounded-md shadow-sm">
                 <input
                   type="text"
                   name="name"
                   id="name"
+                  required
+                  class="
+                    focus:ring-red-500
+                    focus:border-red-500
+                    block
+                    w-full
+                    pr-12
+                    sm:text-sm
+                    border-gray-300
+                    rounded-md
+                    mb-3
+                  "
+                  placeholder="Obrigatório *"
+                />
+              </div>
+            </div>
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700"
+                >Nome de exibição</label
+              >
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
                   required
                   class="
                     focus:ring-red-500

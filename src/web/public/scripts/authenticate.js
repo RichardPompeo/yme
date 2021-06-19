@@ -18,7 +18,7 @@ const getCookie = (cname) => {
   return "nouser";
 };
 
-(async () => {
+const getUser = async () => {
   if (getCookie("token") === "nouser") {
     return redirectAndClearCookies();
   }
@@ -33,19 +33,8 @@ const getCookie = (cname) => {
     return redirectAndClearCookies();
   }
 
-  user = user.data.user;
-
-  console.log(user);
-
-  document.getElementById("name").innerText = user.name;
-  document.getElementById("email").innerText = user.email;
-  document.getElementById("createdAt").innerText = user.createdAt;
-  document.getElementById("id").innerText = user._id;
-  document.getElementById("followers").innerText = user.followers.join(",");
-  document.getElementById("following").innerText = user.following.join(",");
-  document.getElementById("posts").innerText = user.posts.join(",");
-  document.getElementById("avatar").src = user.avatar;
-})();
+  return user.data.user;
+};
 
 const redirectAndClearCookies = () => {
   const cookies = document.cookie.split(";");

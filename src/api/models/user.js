@@ -8,6 +8,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   token: {
     type: String,
     required: true,
@@ -16,8 +20,15 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default:
-      "https://cdn.discordapp.com/avatars/599563864509513739/353b6fb0e0fd382db47666fc31076977.png",
+    default: "http://localhost:3000/images/noavatar.png",
+  },
+  banner: {
+    type: String,
+    default: "http://localhost:3000/images/nobanner.png",
+  },
+  biography: {
+    type: String,
+    default: "Olá, sou um novo usuário do yMe!",
   },
   email: {
     type: String,
@@ -51,8 +62,8 @@ const UserSchema = new mongoose.Schema({
     select: false,
   },
   createdAt: {
-    type: Date,
-    default: Date.now,
+    type: Number,
+    default: Date.now(),
   },
 });
 

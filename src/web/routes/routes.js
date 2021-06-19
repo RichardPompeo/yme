@@ -18,6 +18,10 @@ router.get("/login", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/auth/login.html"));
 });
 
+router.get("/account", (req, res) => {
+  res.sendFile(path.resolve("./src/web/views/user/account.html"));
+});
+
 router.post("/register", async (req, res) => {
   const { email, password, confirm_password } = req.body;
 
