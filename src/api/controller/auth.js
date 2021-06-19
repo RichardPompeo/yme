@@ -16,11 +16,17 @@ function generateToken(params = {}) {
 }
 
 router.post("/register", async (req, res) => {
-  const { email, username } = req.body;
+  let { email, username } = req.body;
+
+  username = "@" + username;
 
   try {
-    if ((await User.findOne({ email })) || (await User.findOne({ username }))) {
-      return res.status(400).send({ error: "User already exists" });
+    if (await User.findOne({ email })) {
+      return res.status(400).send({ error: "Email already exists" });
+    }
+
+    if (await User.findOne({ username })) {
+      return res.status(400).send({ error: "Username already exists" });
     }
 
     req.body.username = "@" + req.body.username;

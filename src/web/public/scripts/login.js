@@ -1,4 +1,5 @@
 const query = new URLSearchParams(window.location.search);
+const loginForm = document.getElementById("login-form");
 
 if (query.get("invalid_password")) {
   setTimeout(() => {
@@ -14,4 +15,8 @@ if (query.get("not_found")) {
 
 if (query.get("email")) {
   document.getElementById("email").value = query.get("email");
+}
+
+if (query.get("ref")) {
+  loginForm.action = "/login?ref=" + query.get("ref");
 }

@@ -22,6 +22,11 @@ router.get("/account", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
 });
 
+router.get("/account/logout", (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
+});
+
 router.post("/register", async (req, res) => {
   const { email, password, confirm_password } = req.body;
 
@@ -32,7 +37,15 @@ router.post("/register", async (req, res) => {
   try {
     await axios.post(`${base_url}/auth/register`, req.body);
   } catch (err) {
-    return res.redirect("/register?user_exists=true");
+    let messageError = err.response.data.error.toLowerCase();
+
+    if (messageError.includes("email")) {
+      return res.redirect("/register?email_exists=true");
+    }
+
+    if (messageError.includes("username")) {
+      return res.redirect("/register?username_exists=true");
+    }
   }
 
   return res.redirect("/login?email=" + email);
@@ -52,6 +65,11 @@ router.post("/login", async (req, res) => {
   }
 
   res.cookie("token", user.data.token);
+
+  if (req.query.ref) {
+    return res.redirect(req.query.ref);
+  }
+
   res.redirect("/");
 });
 
