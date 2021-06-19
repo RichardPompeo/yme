@@ -19,11 +19,16 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/@", (req, res) => {
+  if (!req.cookies.token) return res.redirect("/login?ref=/@");
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
 });
 
 router.get("/@/:username", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
+});
+
+router.get("/account/details", (req, res) => {
+  res.sendFile(path.resolve("./src/web/views/user/accountDetails.html"));
 });
 
 router.get("/account/logout", (req, res) => {

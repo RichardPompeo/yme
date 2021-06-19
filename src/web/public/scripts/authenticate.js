@@ -58,8 +58,8 @@ const redirectAndClearCookies = () => {
     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   }
 
-  if (window.location.href.includes("/account")) {
-    return window.open("/login?ref=/account", "_self");
+  if (window.location.href.includes("/@")) {
+    return window.open("/login?ref=/@", "_self");
   }
 
   return window.open("/login", "_self");

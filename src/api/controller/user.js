@@ -42,6 +42,9 @@ router.get("/username", async (req, res) => {
       return res.status(400).send({ error: "Invalid username was provided" });
     }
 
+    user.email = undefined;
+    user.createdAt = undefined;
+
     res.send({
       ok: true,
       user: user,

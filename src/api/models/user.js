@@ -30,6 +30,28 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "Olá, sou um novo usuário do yMe!",
   },
+  roles: {
+    type: Object,
+    required: true,
+    default: {
+      developer: {
+        activated: false,
+        since: "",
+      },
+      administrator: {
+        activated: false,
+        since: "",
+      },
+      moderator: {
+        activated: false,
+        since: "",
+      },
+      verified: {
+        activated: false,
+        since: "",
+      },
+    },
+  },
   email: {
     type: String,
     unique: true,

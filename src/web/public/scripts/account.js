@@ -1,35 +1,5 @@
-const userButtons = document.getElementById("userButtons");
-const userButton = document.getElementById("userButton");
-const userMenu = document.getElementById("mobile-menu");
-const menuButton = document.getElementById("mobile-menu-button");
-
-let userButtonsOpened = false;
-let menuButtonOpened = false;
-
-userButton.addEventListener("click", (onclick) => {
-  if (!userButtonsOpened) {
-    userButtons.className = `block origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none`;
-  } else if (userButtonsOpened) {
-    userButtons.className = `hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none`;
-  }
-
-  userButtonsOpened = !userButtonsOpened;
-});
-
-menuButton.addEventListener("click", (onclick) => {
-  if (!menuButtonOpened) {
-    userMenu.className = "sm:hidden";
-  } else if (menuButtonOpened) {
-    userMenu.className = "sm:hidden hidden";
-  }
-
-  menuButtonOpened = !menuButtonOpened;
-});
-
 (async () => {
   let user;
-
-  console.log(window.location.pathname);
 
   if (window.location.pathname === "/@") {
     user = await getUser();
@@ -37,9 +7,6 @@ menuButton.addEventListener("click", (onclick) => {
     user = await getUser(window.location.pathname.slice(3));
   }
 
-  document.getElementsByTagName("title")[0].innerText = `yMe - ${user.name}`;
-
-  const profilePicture = document.getElementById("profile-picture");
   const profileImage = document.getElementById("profile-image");
   const profileName = document.getElementById("profile-name");
   const profileUsername = document.getElementById("profile-username");
@@ -52,10 +19,6 @@ menuButton.addEventListener("click", (onclick) => {
   const followButtonIcon = document.getElementById("follow-button-icon");
 
   setTimeout(() => {
-    profilePicture.src = user.avatar;
-    profilePicture.alt = user.username;
-    profilePicture.className = "h-8 w-8 rounded-full";
-
     profileBanner.src = user.banner;
     profileBanner.alt = user.username;
     profileBanner.className =
