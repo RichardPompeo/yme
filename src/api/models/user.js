@@ -36,19 +36,19 @@ const UserSchema = new mongoose.Schema({
     default: {
       developer: {
         activated: false,
-        since: "",
+        since: Date.now(),
       },
       administrator: {
         activated: false,
-        since: "",
+        since: Date.now(),
       },
       moderator: {
         activated: false,
-        since: "",
+        since: Date.now(),
       },
       verified: {
         activated: false,
-        since: "",
+        since: Date.now(),
       },
     },
   },

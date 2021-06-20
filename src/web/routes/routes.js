@@ -23,7 +23,23 @@ router.get("/@", (req, res) => {
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
 });
 
-router.get("/@/:username", (req, res) => {
+router.get("/@/:username", async (req, res) => {
+  let user;
+
+  try {
+    user = await axios.get(`${base_url}/user/authenticate`, {
+      headers: { Authorization: `Bearer ${req.cookies.token}` },
+    });
+  } catch (err) {
+    return res.redirect(`/login?ref=/@/${req.params.username}`);
+  }
+
+  req.params.username = "@" + req.params.username;
+
+  if (user.data.user.username === req.params.username) {
+    return res.redirect("/@");
+  }
+
   res.sendFile(path.resolve("./src/web/views/user/account.html"));
 });
 
@@ -55,6 +71,10 @@ router.post("/register", async (req, res) => {
     if (messageError.includes("username")) {
       return res.redirect("/register?username_exists=true");
     }
+  }
+
+  if (req.query.ref) {
+    return res.redirect("/login?email=" + email + "&ref=" + req.query.ref);
   }
 
   return res.redirect("/login?email=" + email);

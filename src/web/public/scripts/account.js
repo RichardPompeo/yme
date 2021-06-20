@@ -9,11 +9,46 @@
 
   const iconsClass = `inline h-6 w-6 mr-0 text-red-500 m-2 cursor-pointer`;
 
+  const getMonth = (date) => {
+    const months = [
+      "janeiro",
+      "fevereiro",
+      "março",
+      "abril",
+      "maio",
+      "junho",
+      "julho",
+      "agosto",
+      "setembro",
+      "outubro",
+      "novembro",
+      "dezembro",
+    ];
+
+    return months[new Date(date).getMonth()];
+  };
+
   const iconsTooltip = {
-    developer: `<title>${user.name} é um desenvolvedor oficial do yMe</title>`,
-    verified: `<title>${user.name} é um usuário verificado do yMe</title>`,
-    administrator: `<title>${user.name} é um administrador ofical do yMe</title>`,
-    moderator: `<title>${user.name} é um moderador oficial do yMe</title>`,
+    developer: `<title>${user.name} é um desenvolvedor desde ${new Date(
+      user.roles.developer.since
+    ).getDate()} de ${getMonth(user.roles.developer.since)} de ${new Date(
+      user.roles.developer.since
+    ).getFullYear()}</title>`,
+    verified: `<title>${user.name} é um usuário verificado desde ${new Date(
+      user.roles.verified.since
+    ).getDate()} de ${getMonth(user.roles.verified.since)} de ${new Date(
+      user.roles.verified.since
+    ).getFullYear()}</title>`,
+    administrator: `<title>${user.name} é um administrador desde ${new Date(
+      user.roles.administrator.since
+    ).getDate()} de ${getMonth(user.roles.administrator.since)} de ${new Date(
+      user.roles.administrator.since
+    ).getFullYear()}</title>`,
+    moderator: `<title>${user.name} é um moderador desde ${new Date(
+      user.roles.moderator.since
+    ).getDate()} de ${getMonth(user.roles.moderator.since)} de ${new Date(
+      user.roles.moderator.since
+    ).getFullYear()}</title>`,
   };
 
   const icons = {

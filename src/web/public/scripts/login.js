@@ -1,5 +1,6 @@
 const query = new URLSearchParams(window.location.search);
 const loginForm = document.getElementById("login-form");
+const registerHref = document.getElementById("register-href");
 
 if (query.get("invalid_password")) {
   setTimeout(() => {
@@ -19,4 +20,5 @@ if (query.get("email")) {
 
 if (query.get("ref")) {
   loginForm.action = "/login?ref=" + query.get("ref");
+  registerHref.href = "/register?ref=" + query.get("ref");
 }

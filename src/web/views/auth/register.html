@@ -30,7 +30,12 @@
             Crie sua conta yMe
           </h2>
         </div>
-        <form class="mt-8 space-y-6" action="/register" method="POST">
+        <form
+          id="register-form"
+          class="mt-8 space-y-6"
+          action="/register"
+          method="POST"
+        >
           <input type="hidden" name="remember" value="true" />
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
@@ -166,6 +171,7 @@
           <div class="flex items-center">
             <div class="text-sm">
               <a
+                id="login-href"
                 href="/login"
                 class="font-medium text-red-600 hover:text-red-500"
               >
