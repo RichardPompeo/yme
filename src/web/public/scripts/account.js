@@ -83,7 +83,8 @@
 
     profileImage.src = user.avatar;
     profileImage.alt = user.username;
-    profileImage.className = "object-cover w-full h-full";
+    profileImage.className =
+      "object-cover w-full h-full border-white border-4 rounded-full";
 
     profileName.innerHTML = PN;
     profileName.className =

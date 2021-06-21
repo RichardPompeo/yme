@@ -28,6 +28,7 @@ menuButton.addEventListener("click", (onclick) => {
 
 (async () => {
   let user;
+  let loggedUser;
 
   if (
     window.location.pathname === "/@" ||
@@ -36,12 +37,18 @@ menuButton.addEventListener("click", (onclick) => {
     user = await getUser();
   } else {
     user = await getUser(window.location.pathname.slice(3));
+    loggedUser = await getUser();
   }
 
   document.getElementsByTagName("title")[0].innerText = `yMe - ${user.name}`;
 
   const profilePicture = document.getElementById("profile-picture");
 
-  profilePicture.src = user.avatar;
-  profilePicture.alt = user.username;
+  if (loggedUser) {
+    profilePicture.src = loggedUser.avatar;
+    profilePicture.alt = loggedUser.username;
+  } else {
+    profilePicture.src = user.avatar;
+    profilePicture.alt = user.username;
+  }
 })();

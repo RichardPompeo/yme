@@ -30,6 +30,9 @@ router.post("/register", async (req, res) => {
       return res.status(400).send({ error: "Username already exists" });
     }
 
+    while(req.body.username.includes(" ")) req.body.username = req.body.username.replace(" ", "_")
+
+    req.body.username = req.body.username.toLowerCase()
     req.body.username = "@" + req.body.username;
     req.body.token = uuid();
 
